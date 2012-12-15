@@ -17,10 +17,11 @@ class Player extends PhysicsEntity {
 	private static inline var JUMP_STYLE : JumpStyle 	= Normal;
 	private static inline var MOVE_SPEED : Float 			= 1.6;
 	private static inline var JUMP_FORCE : Int 				= 20;
+	private static inline var HURT_DELAY_MS : Int 		= 2500;
 
-	public var hp : Int = 3;
-	public var facingLeft = false;
-	public var isInCloakMode = false;
+	public var hp : Int 			= 3;
+	public var facingLeft 		= false;
+	public var isInCloakMode 	= false;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 
@@ -45,11 +46,11 @@ class Player extends PhysicsEntity {
 		Input.define("toggle_cloak", [Key.SPACE]);
 
 		// Set physics
-		gravity.y = 1.8;
+		gravity.y 		= 1.8;
 		maxVelocity.y = JUMP_FORCE;
 		maxVelocity.x = MOVE_SPEED * 4;
-		friction.x = 0.82; // floor friction
-		friction.y = 0.99; // wall friction		
+		friction.x 		= 0.82;
+		friction.y 		= 0.99; 	
 	} 
 
 	public override function update()
