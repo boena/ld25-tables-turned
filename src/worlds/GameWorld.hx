@@ -15,6 +15,7 @@ import com.haxepunk.tmx.TmxEntity;
 import flash.geom.Point;
 
 import entities.Player;
+import entities.enemies.Guardian;
 
 class GameWorld extends World {
 
@@ -39,6 +40,8 @@ class GameWorld extends World {
 
 		_player = new Player(32, 600);		
 		add(_player);
+
+		initObjectsFromMap();
 	}
 
 	public override function update()
@@ -62,6 +65,45 @@ class GameWorld extends World {
 			HXP.setCamera(_player.x + _player.width / 2 - HXP.width / 2, _player.y + _player.height / 2 - HXP.height / 2 + _cameraOffsetY);
 		}
 
+		updateMobCollisions();
 		super.update();
+	}
+
+	private function initObjectsFromMap() 
+	{
+		var mobGroup : TmxObjectGroup = _map.map.getObjectGroup("mobs");
+		if(mobGroup != null)
+		{
+			for(object in mobGroup.objects)
+			{
+				var typeIdStr = object.custom.resolve("typeId");
+				var typeId : Int = Std.parseInt(typeIdStr == null ? "-1" : typeIdStr);
+
+				if(typeId == -1)
+				{
+					trace("Type id of mob is null");
+					continue;
+				}
+
+				switch (typeId) 
+				{
+					case 1:
+						trace("adding mob with type id 1 - guardian");
+						var guardian : Guardian = new Guardian(object.x, object.y);
+						add(guardian);
+						break;
+					default:
+				}
+			}
+		}
+	}
+
+	private function updateMobCollisions()
+	{
+		var guardian : Guardian = cast _player.collide('guardian', _player.x, _player.y);
+		if( guardian != null )
+		{			
+			new Sfx("sfx/hit.wav").play();
+		}
 	}
 }

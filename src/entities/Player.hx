@@ -5,9 +5,8 @@ import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.Entity;
-import com.haxepunk.graphics.Image;
-import com.haxepunk.masks.Circle;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.Sfx;
 
 import enums.JumpStyle;
 
@@ -84,6 +83,8 @@ class Player extends PhysicsEntity {
 
 		if(_isOnGround && Input.pressed("jump"))
 		{
+			new Sfx("sfx/jump.wav").play();
+			
 			switch (jumpStyle)
 			{
 				case Normal:
