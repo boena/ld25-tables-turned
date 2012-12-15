@@ -39,8 +39,8 @@ class Player extends PhysicsEntity {
 		_sprite = new Spritemap("gfx/player.png", 32, 48);
 		_sprite.add("idle", [0]);
 		_sprite.add("idle_cloaked", [1]);
-		_sprite.add("run", [0]);
-		_sprite.add("run_cloaked", [1]);
+		_sprite.add("run", [7, 8, 9], 8);
+		_sprite.add("run_cloaked", [4, 5, 6], 8);
 		_sprite.add("cloaking", [2, 3], 8, false);
 		graphic = _sprite;
 
