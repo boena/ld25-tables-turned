@@ -12,6 +12,8 @@ import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.Sfx;
 import com.haxepunk.tmx.TmxEntity;
+import com.haxepunk.graphics.Text;
+import com.haxepunk.Entity;
 import flash.geom.Point;
 
 import entities.Player;
@@ -24,6 +26,10 @@ class GameWorld extends World {
 
 	private var _player : Player;
 	private var _map 		: TmxEntity;
+	private var _lifeText : Text;
+	private var totalTaskCount : Int;
+
+	public var completionText : Text;
 
 	private static inline var _cameraOffsetY : Int = -128;
 
@@ -41,10 +47,21 @@ class GameWorld extends World {
 		_map.loadMask("stage");
 		add(_map);
 
+		totalTaskCount = 0;
 		initObjectsFromMap();
 
 		_player = new Player(32, 600);		
 		add(_player);
+
+		var lifeTextEntity = new Entity(32, 500);
+		_lifeText = new Text("HP: " + _player.hp, 0, 0, 0, 0);
+		lifeTextEntity.graphic = _lifeText;
+		add(lifeTextEntity);
+
+		var completionTextEntity = new Entity(128, 500);
+		completionText = new Text("Tasks completed: " + _player.completedTaskCount + " of " + totalTaskCount, 0, 0, 0, 0);
+		completionTextEntity.graphic = completionText;
+		add(completionTextEntity);
 	}
 
 	public override function update()
@@ -69,6 +86,9 @@ class GameWorld extends World {
 		}
 
 		updateMobCollisions();
+
+		updateTexts();
+
 		super.update();
 	}
 
@@ -85,6 +105,8 @@ class GameWorld extends World {
 				if(typeId == -1)
 					continue;
 
+				totalTaskCount++;
+
 				switch (typeId) 
 				{
 					case 1:
@@ -92,7 +114,7 @@ class GameWorld extends World {
 						add(tree);
 						break;
 					default:
-				}
+				}		
 			}
 		}
 
@@ -154,5 +176,11 @@ class GameWorld extends World {
 			_player.canCompleteTask = false;
 			_player.tryingToCompleteTask = false;
 		}
+	}
+
+	private function updateTexts()
+	{
+		_lifeText.text = "HP: " + _player.hp;
+		completionText.text = "Tasks completed: " + _player.completedTaskCount + " of " + totalTaskCount;
 	}
 }

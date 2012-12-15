@@ -26,6 +26,7 @@ class Player extends PhysicsEntity {
 	public var isInCloakMode : Bool 				= false;
 	public var canCompleteTask : Bool 			= false;
 	public var tryingToCompleteTask : Bool 	= false;
+	public var completedTaskCount : Int 		= 0;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 

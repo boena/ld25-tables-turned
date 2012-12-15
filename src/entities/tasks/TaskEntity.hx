@@ -1,6 +1,7 @@
 
 package entities.tasks;
 
+import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.Sfx;
@@ -54,6 +55,7 @@ class TaskEntity extends Entity {
 				_completionTimer = 0;
 				_sprite.play("idle_done");
 				state = DONE;
+				_player.completedTaskCount++;
 			}
 			else
 				_sprite.play("idle_unfinished");
