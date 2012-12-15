@@ -18,13 +18,13 @@ class Guardian extends MovingMob {
 								
 		setHitboxTo( _sprite );
 		
-		_moveLeft= false;
-		_moveSpeed = 0.75;
+		_moveLeft		= false;
+		_moveSpeed 	= 0.75;
 		
-		gravity.y = 1.8;
+		gravity.y 		= 1.8;
 		maxVelocity.x = _moveSpeed * 4;
-		friction.x = 0.82; 
-		friction.y = 0.99; 
+		friction.x 		= 0.82; 
+		friction.y 		= 0.99; 
 	}
 
 }

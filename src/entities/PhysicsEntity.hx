@@ -46,7 +46,6 @@ class PhysicsEntity extends Entity
 
 	public function applyGravity()
 	{
-		//increase velocity based on gravity
 		velocity.x += gravity.x;
 		velocity.y += gravity.y;
 	}
@@ -87,7 +86,6 @@ class PhysicsEntity extends Entity
 
 	private function applyVelocity()
 	{
-		var i:Int;
 		_isOnGround = false;
 		moveBy(velocity.x, velocity.y, "solid", true);
 	}

@@ -12,10 +12,11 @@ import enums.JumpStyle;
 
 class Player extends PhysicsEntity {
 
-	private var sprite:Spritemap;
-	private static var jumpStyle:JumpStyle = Normal;
-	private static inline var kMoveSpeed:Float = 1.6;
-	private static inline var kJumpForce:Int = 20;
+	private var _sprite : Spritemap;
+
+	private static inline var JUMP_STYLE : JumpStyle 	= Normal;
+	private static inline var MOVE_SPEED : Float 			= 1.6;
+	private static inline var JUMP_FORCE : Int 				= 20;
 
 	public var hp : Int = 3;
 	public var facingLeft = false;
@@ -29,14 +30,14 @@ class Player extends PhysicsEntity {
 
 		hasTouchedTheGround = false;
 
-		sprite = new Spritemap("gfx/player.png", 32, 48);
-		sprite.add("idle", [0]);
-		sprite.add("idle_cloaked", [1]);
-		sprite.add("run", [0]);
-		sprite.add("run_cloaked", [1]);
-		graphic = sprite;
+		_sprite = new Spritemap("gfx/player.png", 32, 48);
+		_sprite.add("idle", [0]);
+		_sprite.add("idle_cloaked", [1]);
+		_sprite.add("run", [0]);
+		_sprite.add("run_cloaked", [1]);
+		graphic = _sprite;
 
-		setHitboxTo(sprite);
+		setHitboxTo(_sprite);
 
 		Input.define("left", [Key.LEFT, Key.A]);
 		Input.define("right", [Key.RIGHT, Key.D]);
@@ -45,8 +46,8 @@ class Player extends PhysicsEntity {
 
 		// Set physics
 		gravity.y = 1.8;
-		maxVelocity.y = kJumpForce;
-		maxVelocity.x = kMoveSpeed * 4;
+		maxVelocity.y = JUMP_FORCE;
+		maxVelocity.x = MOVE_SPEED * 4;
 		friction.x = 0.82; // floor friction
 		friction.y = 0.99; // wall friction		
 	} 
@@ -69,11 +70,11 @@ class Player extends PhysicsEntity {
   {
   	if (hasTouchedTheGround && Input.check("left"))
 		{
-			acceleration.x = -kMoveSpeed;
+			acceleration.x = -MOVE_SPEED;
 		}
 		else if (hasTouchedTheGround && Input.check("right"))
 		{
-			acceleration.x = kMoveSpeed;
+			acceleration.x = MOVE_SPEED;
 		}
 
 		if(Input.pressed("toggle_cloak"))
@@ -84,11 +85,11 @@ class Player extends PhysicsEntity {
 		if(_isOnGround && Input.pressed("jump"))
 		{
 			new Sfx("sfx/jump.wav").play();
-			
-			switch (jumpStyle)
+
+			switch (JUMP_STYLE)
 			{
 				case Normal:
-					acceleration.y = -HXP.sign(gravity.y) * kJumpForce;
+					acceleration.y = -HXP.sign(gravity.y) * JUMP_FORCE;
 				case Gravity:
 					gravity.y = -gravity.y;
 				case Disable:
@@ -102,27 +103,27 @@ class Player extends PhysicsEntity {
 		{
 			// we are stopped, set animation to idle
 			if(isInCloakMode)
-				sprite.play("idle_cloaked");
+				_sprite.play("idle_cloaked");
 			else
-				sprite.play("idle");
+				_sprite.play("idle");
 		}
 		else
 		{
 			// we are moving, set animation to walk
 			if(isInCloakMode)
-				sprite.play("run_cloaked");
+				_sprite.play("run_cloaked");
 			else
-				sprite.play("run");
+				_sprite.play("run");
 
-			// this will flip our sprite based on direction
+			// this will flip our _sprite based on direction
 			if (velocity.x < 0) // left
 			{
-				sprite.flipped = true;
+				_sprite.flipped = true;
 				facingLeft = true;
 			}
 			else // right
 			{
-				sprite.flipped = false;
+				_sprite.flipped = false;
 				facingLeft = false;
 			}
 		}
