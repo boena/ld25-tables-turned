@@ -14,7 +14,7 @@ class TaskEntity extends Entity {
 
 	private var _sprite : Spritemap;
 	public var state : TaskState;
-	public var durationInMs : Int = 10000;
+	public var durationInMs : Int = 3000;
 	private var _player : Player;
 	private var _progressPlate : Image;
 	private var _progressBar : Image;
@@ -41,6 +41,7 @@ class TaskEntity extends Entity {
 	{
 		_completionTimer = 0;
 		_progressBar.alpha = 0;
+		_progressBar.scaleX = 1;
 		_progressPlate.alpha = 0;
 	}
 
@@ -66,12 +67,10 @@ class TaskEntity extends Entity {
 				resetTimer();
 		}
 
-		
-
 		if(_completionTimer > 0)
 		{
-			var completionProgress : Float = (nme.Lib.getTimer() / (_completionTimer + durationInMs)) * 60.0;
-			trace(completionProgress);
+			var completionProgress : Float = (nme.Lib.getTimer() - _completionTimer) / durationInMs * 60.0;
+			trace(nme.Lib.getTimer() - _completionTimer / durationInMs);
 			if(completionProgress > 58)
 				completionProgress = 58;
 
