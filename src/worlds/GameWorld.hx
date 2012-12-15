@@ -138,6 +138,7 @@ class GameWorld extends World {
 			{
 				// no no no, you can't do stuff when you're in cloak mode chicken
 				_player.canCompleteTask = false;
+				task.resetTimer();
 			}
 			else
 			{

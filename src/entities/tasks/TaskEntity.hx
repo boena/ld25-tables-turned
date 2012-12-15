@@ -20,12 +20,18 @@ class TaskEntity extends Entity {
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
+		_completionTimer = 0;
 		state = UNFINISHED;
+	}
+
+	public function resetTimer()
+	{
+		_completionTimer = 0;
 	}
 
 	public function completeTask(player : Player)
 	{
-		if(state == UNFINISHED && player.tryingToCompleteTask)
+		if(state == UNFINISHED && _completionTimer == 0)
 		{
 			_completionTimer = nme.Lib.getTimer();
 			_player = player;
@@ -35,9 +41,13 @@ class TaskEntity extends Entity {
 
 	public override function update()
 	{
-		super.update();
+		if(_player != null)
+		{
+			if(!_player.tryingToCompleteTask || !_player.canCompleteTask)
+				resetTimer();
+		}
 
-		if(_completionTimer > 0 && _player.tryingToCompleteTask)
+		if(_completionTimer > 0)
 		{  
 			if(nme.Lib.getTimer() > _completionTimer + durationInMs)
 			{
@@ -49,6 +59,7 @@ class TaskEntity extends Entity {
 				_sprite.play("idle_unfinished");
 		}
 
+		super.update();
 		
 	}
 }
