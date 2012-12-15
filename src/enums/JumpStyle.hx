@@ -3,8 +3,8 @@ package enums;
 
 enum JumpStyle {
 	
-	Normal;
-	Gravity;
-	Disable;
+	NORMAL;
+	GRAVITY;
+	DISABLED;
 
 }

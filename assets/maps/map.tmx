@@ -10,13 +10,27 @@
  </layer>
  <layer name="stage" width="100" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0MEJADAMAzG3+w+dCeJnoSDB/Y0TAAAAAAAAAAAAAJpT+kHbr/d/Xq35VAML3AHi
+   eJzt0bEKwCAQRMGLrf//v6lTaCPoBmdgS+HwVQEAAAAAAAC36KcP4EOPLHpk0SOLHln0yKJHFj2yJPZ4Ft+O9gez+23/fzYbzp/aC+dEAkY=
   </data>
  </layer>
  <objectgroup color="#d0161a" name="mobs" width="100" height="30">
   <object x="611" y="826" width="5" height="7">
    <properties>
     <property name="typeId" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ffff00" name="tasks" width="100" height="30">
+  <object x="771" y="735" width="6" height="9">
+   <properties>
+    <property name="taskId" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#aaff7f" name="pows" width="100" height="30">
+  <object x="322" y="830" width="4" height="3">
+   <properties>
+    <property name="powTypeId" value="1"/>
    </properties>
   </object>
  </objectgroup>

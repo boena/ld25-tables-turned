@@ -16,7 +16,7 @@ class Player extends PhysicsEntity {
 	private var _sprite : Spritemap;
 	private var _hurtTimer : Int;
 
-	private static inline var JUMP_STYLE : JumpStyle 	= Normal;
+	private static inline var JUMP_STYLE : JumpStyle 	= NORMAL;
 	private static inline var MOVE_SPEED : Float 			= 1.6;
 	private static inline var JUMP_FORCE : Int 				= 20;
 	private static inline var HURT_DELAY_MS : Int 		= 3000;
@@ -46,6 +46,7 @@ class Player extends PhysicsEntity {
 		Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("jump", [Key.UP, Key.W]);
 		Input.define("toggle_cloak", [Key.SPACE]);
+		Input.define("use", [Key.E]);
 
 		// Set physics
 		gravity.y 		= 1.8;
@@ -95,17 +96,22 @@ class Player extends PhysicsEntity {
 			isInCloakMode = !isInCloakMode;
 		}
 
+		if(_isOnGround && !isInCloakMode && Input.pressed("use"))
+		{
+
+		}
+
 		if(_isOnGround && Input.pressed("jump"))
 		{
 			new Sfx("sfx/jump.wav").play();
 
 			switch (JUMP_STYLE)
 			{
-				case Normal:
+				case NORMAL:
 					acceleration.y = -HXP.sign(gravity.y) * JUMP_FORCE;
-				case Gravity:
+				case GRAVITY:
 					gravity.y = -gravity.y;
-				case Disable:
+				case DISABLED:
 			}
 		}
   }

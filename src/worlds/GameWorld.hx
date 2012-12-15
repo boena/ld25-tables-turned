@@ -16,6 +16,7 @@ import flash.geom.Point;
 
 import entities.Player;
 import entities.enemies.Guardian;
+import entities.tasks.Tree;
 
 class GameWorld extends World {
 
@@ -38,10 +39,10 @@ class GameWorld extends World {
 		_map.loadMask("stage");
 		add(_map);
 
+		initObjectsFromMap();
+
 		_player = new Player(32, 600);		
 		add(_player);
-
-		initObjectsFromMap();
 	}
 
 	public override function update()
@@ -71,6 +72,28 @@ class GameWorld extends World {
 
 	private function initObjectsFromMap() 
 	{
+		var tasksGroup : TmxObjectGroup = _map.map.getObjectGroup("tasks");
+		if(tasksGroup != null)
+		{
+			for(object in tasksGroup.objects)
+			{
+				var typeIdStr = object.custom.resolve("taskId");
+				var typeId : Int = Std.parseInt(typeIdStr == null ? "-1" : typeIdStr);
+
+				if(typeId == -1)
+					continue;
+
+				switch (typeId) 
+				{
+					case 1:
+						var tree : Tree = new Tree(object.x, object.y);
+						add(tree);
+						break;
+					default:
+				}
+			}
+		}
+
 		var mobGroup : TmxObjectGroup = _map.map.getObjectGroup("mobs");
 		if(mobGroup != null)
 		{
