@@ -100,7 +100,6 @@ class Player extends PhysicsEntity {
 
 		if(_isOnGround && !isInCloakMode && canCompleteTask && Input.pressed("use"))
 		{
-			new Sfx("sfx/task.wav").play();
 			tryingToCompleteTask = true;
 		}
 		else 

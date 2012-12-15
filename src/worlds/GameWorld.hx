@@ -18,6 +18,7 @@ import entities.Player;
 import entities.enemies.Guardian;
 import entities.tasks.Tree;
 import entities.tasks.TaskEntity;
+import enums.TaskState;
 
 class GameWorld extends World {
 
@@ -135,16 +136,16 @@ class GameWorld extends World {
 		{
 			if(_player.isInCloakMode)
 			{
-				// no no no, you can't do stuff when you're in cloak mode
+				// no no no, you can't do stuff when you're in cloak mode chicken
 				_player.canCompleteTask = false;
 			}
 			else
 			{
-				// yes yes yes
-				_player.canCompleteTask = true;
+				if(task.state == UNFINISHED)
+					_player.canCompleteTask = true;
 
 				if(_player.tryingToCompleteTask)
-					task.completeTask();
+					task.completeTask(_player);
 			}
 		}
 		else
