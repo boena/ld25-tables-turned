@@ -13,11 +13,12 @@ import enums.JumpStyle;
 class Player extends PhysicsEntity {
 
 	private var _sprite : Spritemap;
+	private var _hurtTimer : Int;
 
 	private static inline var JUMP_STYLE : JumpStyle 	= Normal;
 	private static inline var MOVE_SPEED : Float 			= 1.6;
 	private static inline var JUMP_FORCE : Int 				= 20;
-	private static inline var HURT_DELAY_MS : Int 		= 2500;
+	private static inline var HURT_DELAY_MS : Int 		= 3000;
 
 	public var hp : Int 			= 3;
 	public var facingLeft 		= false;
@@ -61,8 +62,18 @@ class Player extends PhysicsEntity {
 			hasTouchedTheGround = true;
 
 		handleInput();
-
 		setAnimations();
+
+		if(_hurtTimer > 0)
+		{  
+			if(nme.Lib.getTimer() > _hurtTimer + HURT_DELAY_MS)
+			{
+				_hurtTimer = 0;
+				_sprite.alpha = 1;
+			}
+			else
+				_sprite.alpha = 0.2;
+		}
 
 		super.update();
 	}
@@ -128,5 +139,15 @@ class Player extends PhysicsEntity {
 				facingLeft = false;
 			}
 		}
+	}
+
+	public function initHurtProcess()
+	{
+		_hurtTimer = nme.Lib.getTimer();
+	}
+	
+	public function canBeHurt():Bool
+	{
+		return _hurtTimer == 0;
 	}
 }

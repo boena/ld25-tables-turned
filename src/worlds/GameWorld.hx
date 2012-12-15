@@ -80,15 +80,11 @@ class GameWorld extends World {
 				var typeId : Int = Std.parseInt(typeIdStr == null ? "-1" : typeIdStr);
 
 				if(typeId == -1)
-				{
-					trace("Type id of mob is null");
 					continue;
-				}
 
 				switch (typeId) 
 				{
 					case 1:
-						trace("adding mob with type id 1 - guardian");
 						var guardian : Guardian = new Guardian(object.x, object.y);
 						add(guardian);
 						break;
@@ -103,8 +99,9 @@ class GameWorld extends World {
 		var guardian : Guardian = cast _player.collide('guardian', _player.x, _player.y);
 		if( guardian != null )
 		{			
-			if(!_player.isInCloakMode)
+			if(!_player.isInCloakMode && _player.canBeHurt())
 			{
+				_player.initHurtProcess();
 				new Sfx("sfx/hit.wav").play();
 			}
 		}
