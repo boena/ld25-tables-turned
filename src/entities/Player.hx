@@ -20,6 +20,7 @@ class Player extends PhysicsEntity {
 
 	public var hp : Int = 3;
 	public var facingLeft = false;
+	public var isInCloakMode = false;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 
@@ -31,7 +32,9 @@ class Player extends PhysicsEntity {
 
 		sprite = new Spritemap("gfx/player.png", 32, 48);
 		sprite.add("idle", [0]);
+		sprite.add("idle_cloaked", [1]);
 		sprite.add("run", [0]);
+		sprite.add("run_cloaked", [1]);
 		graphic = sprite;
 
 		setHitboxTo(sprite);
@@ -39,6 +42,7 @@ class Player extends PhysicsEntity {
 		Input.define("left", [Key.LEFT, Key.A]);
 		Input.define("right", [Key.RIGHT, Key.D]);
 		Input.define("jump", [Key.UP, Key.W]);
+		Input.define("toggle_cloak", [Key.SPACE]);
 
 		// Set physics
 		gravity.y = 1.8;
@@ -73,6 +77,11 @@ class Player extends PhysicsEntity {
 			acceleration.x = kMoveSpeed;
 		}
 
+		if(Input.pressed("toggle_cloak"))
+		{
+			isInCloakMode = !isInCloakMode;
+		}
+
 		if(_isOnGround && Input.pressed("jump"))
 		{
 			switch (jumpStyle)
@@ -91,12 +100,18 @@ class Player extends PhysicsEntity {
 		if (velocity.x == 0)
 		{
 			// we are stopped, set animation to idle
-			sprite.play("idle");
+			if(isInCloakMode)
+				sprite.play("idle_cloaked");
+			else
+				sprite.play("idle");
 		}
 		else
 		{
 			// we are moving, set animation to walk
-			sprite.play("run");
+			if(isInCloakMode)
+				sprite.play("run_cloaked");
+			else
+				sprite.play("run");
 
 			// this will flip our sprite based on direction
 			if (velocity.x < 0) // left
