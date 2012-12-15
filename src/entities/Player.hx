@@ -9,6 +9,7 @@ import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.Sfx;
 
 import enums.JumpStyle;
+import worlds.GameWorld;
 
 class Player extends PhysicsEntity {
 
@@ -141,9 +142,20 @@ class Player extends PhysicsEntity {
 		}
 	}
 
-	public function initHurtProcess()
+	public function initHurtProcess(damage:Int)
 	{
+		// Init hurt timer
 		_hurtTimer = nme.Lib.getTimer();
+		
+		// Take away life
+		hp = hp - damage;
+		
+		// If we don't have any HP left. It's game over son.
+		if(hp <= 0)
+		{
+			// TODO: Game Over World
+			HXP.world = new GameWorld();
+		}
 	}
 	
 	public function canBeHurt():Bool

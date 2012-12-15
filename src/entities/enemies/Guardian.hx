@@ -15,6 +15,7 @@ class Guardian extends MovingMob {
 		graphic = _sprite;
 		
 		type = 'guardian';
+		hitDamage = 3;
 								
 		setHitboxTo( _sprite );
 		

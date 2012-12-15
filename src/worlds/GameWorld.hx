@@ -101,7 +101,7 @@ class GameWorld extends World {
 		{			
 			if(!_player.isInCloakMode && _player.canBeHurt())
 			{
-				_player.initHurtProcess();
+				_player.initHurtProcess(guardian.hitDamage);
 				new Sfx("sfx/hit.wav").play();
 			}
 		}

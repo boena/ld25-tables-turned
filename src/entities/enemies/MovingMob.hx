@@ -8,9 +8,11 @@ import entities.PhysicsEntity;
 
 class MovingMob extends PhysicsEntity {
 
-	private var _sprite:Spritemap;
-	private var _moveLeft : Bool;
-	private var _moveSpeed:Float = 0.85;
+	private var _sprite    : Spritemap;
+	private var _moveLeft  : Bool;
+	private var _moveSpeed : Float 	= 0.85;
+	
+	public var hitDamage 	 : Int 		= 1;
 
 	public override function update()
 	{
