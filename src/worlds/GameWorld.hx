@@ -103,7 +103,10 @@ class GameWorld extends World {
 		var guardian : Guardian = cast _player.collide('guardian', _player.x, _player.y);
 		if( guardian != null )
 		{			
-			new Sfx("sfx/hit.wav").play();
+			if(!_player.isInCloakMode)
+			{
+				new Sfx("sfx/hit.wav").play();
+			}
 		}
 	}
 }
