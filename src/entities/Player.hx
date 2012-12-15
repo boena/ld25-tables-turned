@@ -102,10 +102,6 @@ class Player extends PhysicsEntity {
 		{
 			tryingToCompleteTask = true;
 		}
-		else 
-		{
-			tryingToCompleteTask = false;
-		}
 
 		if(_isOnGround && Input.pressed("jump"))
 		{

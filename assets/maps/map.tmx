@@ -21,7 +21,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="tasks" width="100" height="30">
-  <object x="771" y="735" width="6" height="9">
+  <object x="225" y="736" width="34" height="55">
    <properties>
     <property name="taskId" value="1"/>
    </properties>

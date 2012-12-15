@@ -12,7 +12,7 @@ class TaskEntity extends Entity {
 
 	private var _sprite : Spritemap;
 	public var state : TaskState;
-	public var durationInMs : Int = 1000;
+	public var durationInMs : Int = 3000;
 	private var _player : Player;
 
 	private var _completionTimer : Int;
@@ -27,16 +27,17 @@ class TaskEntity extends Entity {
 	{
 		if(state == UNFINISHED && player.tryingToCompleteTask)
 		{
+			_completionTimer = nme.Lib.getTimer();
 			_player = player;
 			new Sfx("sfx/task.wav").play();
-			_completionTimer = nme.Lib.getTimer();
 		}
 	}
 
 	public override function update()
 	{
+		super.update();
 
-		if(_completionTimer > 0 && _player.canCompleteTask)
+		if(_completionTimer > 0 && _player.tryingToCompleteTask)
 		{  
 			if(nme.Lib.getTimer() > _completionTimer + durationInMs)
 			{
@@ -48,6 +49,6 @@ class TaskEntity extends Entity {
 				_sprite.play("idle_unfinished");
 		}
 
-		super.update();
+		
 	}
 }
