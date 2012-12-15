@@ -17,6 +17,7 @@ import flash.geom.Point;
 import entities.Player;
 import entities.enemies.Guardian;
 import entities.tasks.Tree;
+import entities.tasks.TaskEntity;
 
 class GameWorld extends World {
 
@@ -127,6 +128,29 @@ class GameWorld extends World {
 				_player.initHurtProcess(guardian.hitDamage);
 				new Sfx("sfx/hit.wav").play();
 			}
+		}
+
+		var task : TaskEntity = cast _player.collide("task", _player.x, _player.y);
+		if( task != null ) 
+		{
+			if(_player.isInCloakMode)
+			{
+				// no no no, you can't do stuff when you're in cloak mode
+				_player.canCompleteTask = false;
+			}
+			else
+			{
+				// yes yes yes
+				_player.canCompleteTask = true;
+
+				if(_player.tryingToCompleteTask)
+					task.completeTask();
+			}
+		}
+		else
+		{
+			_player.canCompleteTask = false;
+			_player.tryingToCompleteTask = false;
 		}
 	}
 }

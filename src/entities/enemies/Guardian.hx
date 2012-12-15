@@ -9,7 +9,7 @@ class Guardian extends MovingMob {
 	{
 		super(x, y);
 		
-		_sprite = new Spritemap("gfx/guardian.png", 32, 32);
+		_sprite = new Spritemap("gfx/guardian.png", 32, 48);
 		_sprite.add("run", [0, 1, 2, 3], 8);
 		_sprite.play("run");
 		graphic = _sprite;

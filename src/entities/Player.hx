@@ -21,9 +21,11 @@ class Player extends PhysicsEntity {
 	private static inline var JUMP_FORCE : Int 				= 20;
 	private static inline var HURT_DELAY_MS : Int 		= 3000;
 
-	public var hp : Int 			= 3;
-	public var facingLeft 		= false;
-	public var isInCloakMode 	= false;
+	public var hp : Int 										= 10;
+	public var facingLeft : Bool						= false;
+	public var isInCloakMode : Bool 				= false;
+	public var canCompleteTask : Bool 			= false;
+	public var tryingToCompleteTask : Bool 	= false;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 
@@ -96,9 +98,14 @@ class Player extends PhysicsEntity {
 			isInCloakMode = !isInCloakMode;
 		}
 
-		if(_isOnGround && !isInCloakMode && Input.pressed("use"))
+		if(_isOnGround && !isInCloakMode && canCompleteTask && Input.pressed("use"))
 		{
-
+			new Sfx("sfx/task.wav").play();
+			tryingToCompleteTask = true;
+		}
+		else 
+		{
+			tryingToCompleteTask = false;
 		}
 
 		if(_isOnGround && Input.pressed("jump"))
