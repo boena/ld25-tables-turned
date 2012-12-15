@@ -114,7 +114,6 @@ class Player extends PhysicsEntity {
 	{
 		if (velocity.x == 0)
 		{
-			// we are stopped, set animation to idle
 			if(isInCloakMode)
 				_sprite.play("idle_cloaked");
 			else
@@ -122,19 +121,17 @@ class Player extends PhysicsEntity {
 		}
 		else
 		{
-			// we are moving, set animation to walk
 			if(isInCloakMode)
 				_sprite.play("run_cloaked");
 			else
 				_sprite.play("run");
 
-			// this will flip our _sprite based on direction
-			if (velocity.x < 0) // left
+			if (velocity.x < 0) 
 			{
 				_sprite.flipped = true;
 				facingLeft = true;
 			}
-			else // right
+			else 
 			{
 				_sprite.flipped = false;
 				facingLeft = false;
