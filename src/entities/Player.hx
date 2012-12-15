@@ -40,7 +40,7 @@ class Player extends PhysicsEntity {
 		_sprite.add("idle_cloaked", [1]);
 		_sprite.add("run", [0]);
 		_sprite.add("run_cloaked", [1]);
-		_sprite.add("cloaking", [2, 3], 8);
+		_sprite.add("cloaking", [2, 3], 8, false);
 		graphic = _sprite;
 
 		setHitboxTo(_sprite);
@@ -122,6 +122,12 @@ class Player extends PhysicsEntity {
 
   private function setAnimations()
 	{
+		if(_sprite.currentAnim == "cloaking")
+		{
+			if(!_sprite.complete)
+				return;
+		}
+
 		if (velocity.x == 0)
 		{
 			if(isInCloakMode)
