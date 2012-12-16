@@ -18,7 +18,6 @@ class Ghetto extends TaskEntity, implements ITask {
 		_sprite.play("idle_unfinished");
 		graphic = _sprite;
 		
-		type = 'task';
 		durationInMs = 6000;
 								
 		setHitboxTo( _sprite );

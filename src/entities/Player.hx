@@ -9,7 +9,7 @@ import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.Sfx;
 
 import enums.JumpStyle;
-import worlds.GameWorld;
+import worlds.GameOverWorld;
 
 class Player extends PhysicsEntity {
 
@@ -171,8 +171,7 @@ class Player extends PhysicsEntity {
 		// If we don't have any HP left. It's game over son.
 		if(hp <= 0)
 		{
-			// TODO: Game Over World
-			HXP.world = new GameWorld();
+			HXP.world = new GameOverWorld();
 		}
 	}
 	

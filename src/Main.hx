@@ -1,7 +1,7 @@
 import com.haxepunk.Engine;
 import com.haxepunk.HXP;
 
-import worlds.GameWorld;
+import worlds.MenuWorld;
 
 class Main extends Engine
 {
@@ -28,7 +28,7 @@ class Main extends Engine
 		}
 #end
 		HXP.screen.color = kClearColor;
-		HXP.world = new GameWorld();
+		HXP.world = new MenuWorld();
 	}
 
 	public static function main()

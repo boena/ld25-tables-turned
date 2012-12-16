@@ -114,4 +114,7 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="graphics" width="300" height="30">
+  <object x="9443" y="833" width="4" height="3"/>
+ </objectgroup>
 </map>

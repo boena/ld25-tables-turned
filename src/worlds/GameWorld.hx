@@ -7,12 +7,10 @@ import com.haxepunk.tmx.TmxObject;
 import com.haxepunk.tmx.TmxObjectGroup;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
-import com.haxepunk.utils.Input;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Backdrop;
 import com.haxepunk.Sfx;
-import com.haxepunk.tmx.TmxEntity;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.Entity;
 import flash.geom.Point;
@@ -43,6 +41,8 @@ class GameWorld extends World {
 	private var _lifeText : Text;
 	private var _completionTextEntity : Entity;
 	public var _completionText : Text;
+	private var _scoreTextEntity : Entity;
+	private var _scoreText : Text;
 	private var _totalTaskCount : Int;
 	
 
@@ -50,7 +50,7 @@ class GameWorld extends World {
 	private static inline var HIT_FX = new Sfx("sfx/hit.wav");
 	private static inline var POW_FX = new Sfx("sfx/pow.wav");	
 	private static inline var CAMERA_OFFSET_Y : Int = -128;
-	private static inline var UI_TEXT_OFFSET_Y : Int = -122;
+	private static inline var UI_TEXT_OFFSET_Y : Int = -123;
 
 	public function new()
 	{
@@ -62,6 +62,7 @@ class GameWorld extends World {
 		Input.define("restart", [Key.ESCAPE]);
 
 		addGraphic(new Backdrop("gfx/backdrop.png", true, false));
+		addGraphic(new Image("gfx/finish.png"), 0, 9443, 833);
 
 		_map = new TmxEntity("maps/map.tmx");
 		_map.loadGraphic("gfx/tileset.png", ["bg", "stage"]);
@@ -73,7 +74,7 @@ class GameWorld extends World {
 		_totalTaskCount = 0;
 		initObjectsFromMap();
 
-		_player = new Player(3200, 600);		
+		_player = new Player(32, 600);		
 		add(_player);
 
 		_uiEntity = new Entity(0, 500);
@@ -86,7 +87,13 @@ class GameWorld extends World {
 		_lifeTextEntity.graphic = _lifeText;
 		add(_lifeTextEntity);
 
-		_completionTextEntity = new Entity(300, 500);
+		_scoreTextEntity = new Entity(120, 500);
+		_scoreText = new Text("SCORE: 0000000", 0, 0, 0, 0);
+		_scoreText.color = 0x000000;
+		_scoreTextEntity.graphic = _scoreText;
+		add(_scoreTextEntity);
+
+		_completionTextEntity = new Entity(400, 500);
 		_completionText = new Text("Tasks completed: " + _player.completedTaskCount + " of " + _totalTaskCount, 0, 0, 0, 0);
 		_completionText.color = 0x000000;
 		_completionTextEntity.graphic = _completionText;
@@ -98,6 +105,12 @@ class GameWorld extends World {
 		if (Input.check("restart"))
 		{
 			HXP.world = new GameWorld();
+		}
+
+		// Finished the map
+		if(_player.x > _map.width - 50)
+		{
+			HXP.world = new FinishWorld(_player.score, _player.hp, _player.completedTaskCount, _totalTaskCount);
 		}
 
 		//Center the camera on the player
@@ -265,12 +278,16 @@ class GameWorld extends World {
 		_uiEntity.y = uiPositionY - 130;
 
 		_lifeText.text = "" + _player.hp;
+		_scoreText.text = "SCORE: " + Math.round(_player.score);
 		_completionText.text = "Tasks completed: " + _player.completedTaskCount + " of " + _totalTaskCount;
 
-		_lifeTextEntity.x = uiPositionX + 60;
+		_lifeTextEntity.x = uiPositionX + 45;
 		_lifeTextEntity.y = uiPositionY + UI_TEXT_OFFSET_Y;
 
-		_completionTextEntity.x = uiPositionX + 300;
+		_scoreTextEntity.x = uiPositionX + 200;
+		_scoreTextEntity.y = uiPositionY + UI_TEXT_OFFSET_Y;
+
+		_completionTextEntity.x = uiPositionX + 400;
 		_completionTextEntity.y = uiPositionY + UI_TEXT_OFFSET_Y;
 	}
 }

@@ -17,8 +17,6 @@ class Tree extends TaskEntity, implements ITask {
 		_sprite.add("idle_done", [1]);
 		_sprite.play("idle_unfinished");
 		graphic = _sprite;
-		
-		type = 'task';
 								
 		setHitboxTo( _sprite );
 	}

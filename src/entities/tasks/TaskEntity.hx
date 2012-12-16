@@ -18,6 +18,7 @@ class TaskEntity extends Entity {
 	private var _player : Player;
 	private var _progressPlate : Image;
 	private var _progressBar : Image;
+	public var taskScore : Int = 100;
 
 	private var _completionTimer : Int;
 
@@ -27,6 +28,7 @@ class TaskEntity extends Entity {
 		
 		_completionTimer = 0;
 		state = UNFINISHED;
+		type = 'task';
 		
 		_progressPlate = new Image("gfx/progress.png");
 		_progressPlate.alpha = 0;
@@ -82,6 +84,7 @@ class TaskEntity extends Entity {
 				_sprite.play("idle_done");
 				state = DONE;
 				_player.completedTaskCount++;
+				_player.score += taskScore;
 
 				_progressBar.alpha = 0;
 				_progressPlate.alpha = 0;
