@@ -73,7 +73,7 @@ class GameWorld extends World {
 		_totalTaskCount = 0;
 		initObjectsFromMap();
 
-		_player = new Player(32, 600);		
+		_player = new Player(2500, 600);		
 		add(_player);
 
 		_uiEntity = new Entity(0, 500);

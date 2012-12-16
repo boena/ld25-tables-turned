@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="400" height="30" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="300" height="30" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
   <image source="../../../turned-tables/assets/gfx/tileset.png" width="320" height="64"/>
  </tileset>
- <layer name="bg" width="400" height="30">
+ <layer name="bg" width="300" height="30">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T+1pCaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4Aa7gAAB
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBcDjKAAAQ==
   </data>
  </layer>
- <layer name="stage" width="400" height="30">
+ <layer name="stage" width="300" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2kEKgzAQBdCYrfe/bzcNiFRpNWaS5j2YpURczMeZpAQAAAAAAAAAAAAAAAAAAAC0srwLAIolyQcAfpc39S15AwAAAMBIzLMAAIAoS3KvC+jbGv0CfJTTtXtdAK3IDwCukB/jOZpnmXMBLcmP8ex3I/YkQAT50a+jbNjvRuxJgAjyo1+yAeiZ/OiHGRQwEvkRr+RGTvIDGEeP+XGnh9bcLT/9zDY3SrXMjxpn+WeCeZ31W/X899zvOFrnR42ym4E5nd3lmb3u9NPWZ0a8q90+zC26R6v/KGA+L5L8A04=
+   eJzt3MuOgzAMBVDodv7/f7uZBWKAME2CneYcyUvKq74y4rEsAAAAAAAAAAAAAADALNbfilhv5PKtfgNoY13i8qhkTVJADq9N3fVUH7+S1N7Rvss1IKPSHGYuAwBqmSeuOT4AQC331+Cvn+gN4FDp/toMZDV78oosZBMl8mo8Z309ar+77uUueTUez5EzK3mV11kW/ec58khX+em9RD4hr/LKnEUlPd4pPHoGnrnIqzy+4Zpum0dXc6D5ik/Iq3jb/h69B0s5Ja+okTGvav6Hra8/ei5zNIc82YOtMmNfrfPq7PzJq/lEfxcpe/U+nj3mjl7bencfzFf0Ev1dpMz1ZP/WrjNiW2v3s5a8mk90Jqg5K2r+ZWxvG6AEdw==
   </data>
  </layer>
- <objectgroup color="#d0161a" name="mobs" width="400" height="30">
+ <objectgroup color="#d0161a" name="mobs" width="300" height="30">
   <object x="610" y="803" width="10" height="9">
    <properties>
     <property name="typeId" value="1"/>
@@ -44,8 +44,18 @@
     <property name="typeId" value="2"/>
    </properties>
   </object>
+  <object x="5135" y="350" width="22" height="58">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="5186" y="830" width="54" height="77">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#ffff00" name="tasks" width="400" height="30">
+ <objectgroup color="#ffff00" name="tasks" width="300" height="30">
   <object x="1059" y="738" width="34" height="55">
    <properties>
     <property name="taskId" value="1"/>
@@ -81,8 +91,13 @@
     <property name="taskId" value="1"/>
    </properties>
   </object>
+  <object x="3905" y="151" width="125" height="187">
+   <properties>
+    <property name="taskId" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#aaff7f" name="pows" width="400" height="30">
+ <objectgroup color="#aaff7f" name="pows" width="300" height="30">
   <object x="322" y="830" width="27" height="28">
    <properties>
     <property name="typeId" value="1"/>
