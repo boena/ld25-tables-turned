@@ -10,6 +10,7 @@ import com.haxepunk.utils.Key;
 import com.haxepunk.utils.Input;
 import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.graphics.Backdrop;
 import com.haxepunk.Sfx;
 import com.haxepunk.tmx.TmxEntity;
 import com.haxepunk.graphics.Text;
@@ -19,6 +20,7 @@ import flash.geom.Point;
 import entities.Player;
 import entities.enemies.Guardian;
 import entities.tasks.Tree;
+import entities.tasks.Ghetto;
 import entities.tasks.TaskEntity;
 import enums.TaskState;
 
@@ -41,6 +43,8 @@ class GameWorld extends World {
 	public override function begin()
 	{
 		Input.define("restart", [Key.ESCAPE]);
+
+		addGraphic(new Backdrop("gfx/backdrop.png", true, false));
 
 		_map = new TmxEntity("maps/map.tmx");
 		_map.loadGraphic("gfx/tileset.png", ["bg", "stage"]);
@@ -112,7 +116,9 @@ class GameWorld extends World {
 					case 1:
 						var tree : Tree = new Tree(object.x, object.y);
 						add(tree);
-						break;
+					case 2:
+						var ghetto : Ghetto = new Ghetto(object.x, object.y);
+						add(ghetto);
 					default:
 				}		
 			}
