@@ -10,7 +10,7 @@ class PowerUp extends PowEntity {
 		super(x, y);
 	
 		_sprite = new Spritemap("gfx/heart.png", 32, 32);
-		_sprite.add("idle", [0]);
+		_sprite.add("idle", [0, 1], 8);
 		_sprite.play("idle");
 		graphic = _sprite;
 		
