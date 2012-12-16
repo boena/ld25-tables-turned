@@ -10,7 +10,7 @@
  </layer>
  <layer name="stage" width="300" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt3MuOgzAMBVDodv7/f7uZBWKAME2CneYcyUvKq74y4rEsAAAAAAAAAAAAAADALNbfilhv5PKtfgNoY13i8qhkTVJADq9N3fVUH7+S1N7Rvss1IKPSHGYuAwBqmSeuOT4AQC331+Cvn+gN4FDp/toMZDV78oosZBMl8mo8Z309ar+77uUueTUez5EzK3mV11kW/ec58khX+em9RD4hr/LKnEUlPd4pPHoGnrnIqzy+4Zpum0dXc6D5ik/Iq3jb/h69B0s5Ja+okTGvav6Hra8/ei5zNIc82YOtMmNfrfPq7PzJq/lEfxcpe/U+nj3mjl7bencfzFf0Ev1dpMz1ZP/WrjNiW2v3s5a8mk90Jqg5K2r+ZWxvG6AEdw==
+   eJzt28tugzAQBdCk2/7//3aFihAOxq9x8DnSbKoGEnu4mBBeLwAAAAAAAAAAAACe4B39BoBHeu+qdjt3/k4/LeazdL+Rr2+1DcZ7J6pme8RrdX7pIdVzo4vvsZ+3n0Pdmcuc/9Ub4+3nM9eo4/jYb1F1dPbZ9W6c4/klNY/miBVdrcOsy/o6G/uc806rOTG3QEppPllfccZ64jPjU64mn+QVMErLrJJXpLi/Ro3a675Z8+o3eP+cu7q/tgJZXaZHTkXn1bZfecUsZFOdXmuqGfJqI6++z9OeW3DdW67FPT95RU9+R85mREbJK3KksuhTP83kU2+36PuVM3rkmkpekWPmLLrS45lCv4H/Nzqn5BVHTzj+cs/71ldlotZV8orNvv+i+6HWyOfQVsur6KyaoT9nzKuaMWl9/dHzNWe9N7IfWmZGz+dmU/O3Sl7NkFOz5FXO9wwrV+/xjOyHVmMU1fcReXW3P1r03Qw5dTVvueNSe4xFf/6Za+TxW7vPiPfao+/vGD1WkRV9LET156zjoNYq/atK6g+4rAlS
   </data>
  </layer>
  <objectgroup color="#d0161a" name="mobs" width="300" height="30">
