@@ -19,6 +19,7 @@ class Ghetto extends TaskEntity, implements ITask {
 		graphic = _sprite;
 		
 		durationInMs = 6000;
+		taskScore = 500;
 								
 		setHitboxTo( _sprite );
 	}

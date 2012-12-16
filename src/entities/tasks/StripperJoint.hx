@@ -19,6 +19,7 @@ class StripperJoint extends TaskEntity, implements ITask {
 		graphic = _sprite;
 		
 		durationInMs = 5000;
+		taskScore = 300;
 								
 		setHitboxTo( _sprite );
 	}
