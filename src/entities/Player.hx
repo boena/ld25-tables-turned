@@ -29,7 +29,7 @@ class Player extends PhysicsEntity {
 	public var canCompleteTask : Bool 			= false;
 	public var tryingToCompleteTask : Bool 	= false;
 	public var completedTaskCount : Int 		= 0;
-	public var score : Int 									= 0;
+	public var score : Float 								= 0;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 
@@ -69,6 +69,11 @@ class Player extends PhysicsEntity {
 
 		if( !hasTouchedTheGround && _isOnGround) 
 			hasTouchedTheGround = true;
+
+		if( isInCloakMode )
+		{
+			score -= 0.05;
+		}
 
 		handleInput();
 		setAnimations();

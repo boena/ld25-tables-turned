@@ -10,7 +10,7 @@
  </layer>
  <layer name="stage" width="300" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt28tugzAQBdCk2/7//3aFihAOxq9x8DnSbKoGEnu4mBBeLwAAAAAAAAAAAACe4B39BoBHeu+qdjt3/k4/LeazdL+Rr2+1DcZ7J6pme8RrdX7pIdVzo4vvsZ+3n0Pdmcuc/9Ub4+3nM9eo4/jYb1F1dPbZ9W6c4/klNY/miBVdrcOsy/o6G/uc806rOTG3QEppPllfccZ64jPjU64mn+QVMErLrJJXpLi/Ro3a675Z8+o3eP+cu7q/tgJZXaZHTkXn1bZfecUsZFOdXmuqGfJqI6++z9OeW3DdW67FPT95RU9+R85mREbJK3KksuhTP83kU2+36PuVM3rkmkpekWPmLLrS45lCv4H/Nzqn5BVHTzj+cs/71ldlotZV8orNvv+i+6HWyOfQVsur6KyaoT9nzKuaMWl9/dHzNWe9N7IfWmZGz+dmU/O3Sl7NkFOz5FXO9wwrV+/xjOyHVmMU1fcReXW3P1r03Qw5dTVvueNSe4xFf/6Za+TxW7vPiPfao+/vGD1WkRV9LET156zjoNYq/atK6g+4rAlS
+   eJzt28tugzAQBdDQbf//f7tCRRYE49cYOEeaTRSFYo8vpiSfDwAAAAAAAAAAAABPsET/AcAjLZuq/Zwrr9NPi/ksPW70cfTbPS0HVfN5xGt1fenhqOdGF/exnbefpK7MZc579cZ42/nMNWodp/0WVam9c9e7cdLry9E8miPe6GwfZl/W197Y51x3Ws2JuQWOlOaT/RV77Ce+Mz7lavJJXgGjtMwqecURz9eoUXvfN2te/QYfn31nz9feQFaX6ZFT0Xm1HldeMQvZVKfXnmqGvFrJq/t52u8W3PeWa/HMT17Rk++RsxqRUfKKHEdZ9K2fZvKtt1v0/ZszeuSeSl6RY+YsOtPjN4W+A/9vdE7JK1JPWn9n68n+qkzUvkpesdr2X3Q/tJCzluTVddFZNUN/zphX0WOyKr1nufLetPdGnnuPY+Wup5Jxyn19Ji1zOTKnZsmrnP8zvLl6j2dkP/Qas1F9H5FXV/tj5JhG5lXuuNSusejzn7kiemt0Hs/W91eMHqvIil4LUf056ziod5X+VSX1B4qxCUI=
   </data>
  </layer>
  <objectgroup color="#d0161a" name="mobs" width="300" height="30">
@@ -50,6 +50,31 @@
    </properties>
   </object>
   <object x="5186" y="830" width="54" height="77">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4780" y="267" width="14" height="20">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="4580" y="220" width="23" height="37">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="7205" y="755" width="51" height="49">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="6162" y="803" width="40" height="48">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="4442" y="768" width="22" height="31">
    <properties>
     <property name="typeId" value="2"/>
    </properties>
@@ -96,9 +121,24 @@
     <property name="taskId" value="2"/>
    </properties>
   </object>
+  <object x="6978" y="733" width="62" height="129">
+   <properties>
+    <property name="taskId" value="1"/>
+   </properties>
+  </object>
+  <object x="5698" y="771" width="129" height="126">
+   <properties>
+    <property name="taskId" value="3"/>
+   </properties>
+  </object>
+  <object x="4161" y="735" width="67" height="127">
+   <properties>
+    <property name="taskId" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#aaff7f" name="pows" width="300" height="30">
-  <object x="322" y="830" width="27" height="28">
+  <object x="803" y="832" width="27" height="28">
    <properties>
     <property name="typeId" value="1"/>
    </properties>
@@ -110,11 +150,348 @@
   </object>
   <object x="3139" y="449" width="26" height="27">
    <properties>
-    <property name="typeId" value="3"/>
+    <property name="typeId" value="2"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="graphics" width="300" height="30">
-  <object x="9443" y="833" width="4" height="3"/>
+  <object x="420" y="831" width="21" height="25">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="2892" y="287" width="14" height="14">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4076" y="320" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4118" y="320" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4157" y="320" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4192" y="320" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4224" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4261" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4297" y="320" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4334" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4369" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4405" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4444" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4482" y="320" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4522" y="321" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4223" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4191" y="280" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4156" y="280" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4296" y="280" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4443" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4404" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4521" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4117" y="280" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4333" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4075" y="280" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4368" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4481" y="280" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4260" y="281" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4220" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4188" y="244" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4153" y="244" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4293" y="244" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4440" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4401" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4518" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4114" y="244" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4330" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4072" y="244" width="17" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4365" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4478" y="244" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4257" y="245" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4763" y="326" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4724" y="326" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4841" y="326" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="4801" y="325" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5060" y="361" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5220" y="355" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5332" y="383" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5221" y="575" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5155" y="606" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5350" y="547" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5466" y="443" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9416" y="225" width="15" height="16">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="8742" y="257" width="17" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="8777" y="257" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="8806" y="258" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="8935" y="326" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9065" y="295" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9159" y="388" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9227" y="321" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9320" y="258" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9510" y="261" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9510" y="261" width="14" height="13">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="9544" y="542" width="15" height="16">
+   <properties>
+    <property name="typeId" value="1"/>
+   </properties>
+  </object>
+  <object x="3314" y="512" width="26" height="27">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="3341" y="670" width="26" height="27">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5490" y="707" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
+  <object x="5423" y="808" width="22" height="12">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

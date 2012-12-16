@@ -29,6 +29,7 @@ import entities.tasks.StripperJoint;
 
 import entities.pows.PowEntity;
 import entities.pows.PowerUp;
+import entities.pows.Coin;
 
 class GameWorld extends World {
 
@@ -181,6 +182,9 @@ class GameWorld extends World {
 					case 1:
 						var heart : PowerUp = new PowerUp(object.x, object.y, 1);
 						add(heart);
+					case 2:
+						var coin : Coin = new Coin(object.x, object.y);
+						add(coin);
 					default:
 				}
 			}
