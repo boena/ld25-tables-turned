@@ -36,15 +36,21 @@ class GameWorld extends World {
 
 	private var _player : Player;
 	private var _map 		: TmxEntity;
+
+	// UI 
+	private var _uiEntity : Entity;
+	private var _lifeTextEntity : Entity;
 	private var _lifeText : Text;
-	private var totalTaskCount : Int;
+	private var _completionTextEntity : Entity;
+	public var _completionText : Text;
+	private var _totalTaskCount : Int;
+	
 
-	private static inline var _hitFx = new Sfx("sfx/hit.wav");
-	private static inline var _powFx = new Sfx("sfx/pow.wav");
-
-	public var completionText : Text;
-
-	private static inline var _cameraOffsetY : Int = -128;
+	// Statics
+	private static inline var HIT_FX = new Sfx("sfx/hit.wav");
+	private static inline var POW_FX = new Sfx("sfx/pow.wav");	
+	private static inline var CAMERA_OFFSET_Y : Int = -128;
+	private static inline var UI_TEXT_OFFSET_Y : Int = -122;
 
 	public function new()
 	{
@@ -64,21 +70,27 @@ class GameWorld extends World {
 
 		//new Sfx("music/loop.mp3").loop(0.3);
 
-		totalTaskCount = 0;
+		_totalTaskCount = 0;
 		initObjectsFromMap();
 
 		_player = new Player(32, 600);		
 		add(_player);
 
-		var lifeTextEntity = new Entity(32, 500);
-		_lifeText = new Text("HP: " + _player.hp, 0, 0, 0, 0);
-		lifeTextEntity.graphic = _lifeText;
-		add(lifeTextEntity);
+		_uiEntity = new Entity(0, 500);
+		_uiEntity.graphic = new Image("gfx/ui.png");
+		add(_uiEntity);
 
-		var completionTextEntity = new Entity(128, 500);
-		completionText = new Text("Tasks completed: " + _player.completedTaskCount + " of " + totalTaskCount, 0, 0, 0, 0);
-		completionTextEntity.graphic = completionText;
-		add(completionTextEntity);
+		_lifeTextEntity = new Entity(60, 500);
+		_lifeText = new Text("" + _player.hp, 0, 0, 0, 0);
+		_lifeText.color = 0x000000;
+		_lifeTextEntity.graphic = _lifeText;
+		add(_lifeTextEntity);
+
+		_completionTextEntity = new Entity(300, 500);
+		_completionText = new Text("Tasks completed: " + _player.completedTaskCount + " of " + _totalTaskCount, 0, 0, 0, 0);
+		_completionText.color = 0x000000;
+		_completionTextEntity.graphic = _completionText;
+		add(_completionTextEntity);
 	}
 
 	public override function update()
@@ -91,15 +103,15 @@ class GameWorld extends World {
 		//Center the camera on the player
 		if(_player.x - HXP.width / 2 < 0)
 		{
-			HXP.setCamera(0, _player.y + _player.height / 2 - HXP.height / 2 + _cameraOffsetY);
+			HXP.setCamera(0, _player.y + _player.height / 2 - HXP.height / 2 + CAMERA_OFFSET_Y);
 		}
 		else if (_player.x + HXP.width / 2 > _map.width) 
 		{
-			HXP.setCamera(_map.width -  HXP.width, _player.y + _player.height / 2 - HXP.height / 2 + _cameraOffsetY);
+			HXP.setCamera(_map.width -  HXP.width, _player.y + _player.height / 2 - HXP.height / 2 + CAMERA_OFFSET_Y);
 		}
 		else
 		{
-			HXP.setCamera(_player.x + _player.width / 2 - HXP.width / 2, _player.y + _player.height / 2 - HXP.height / 2 + _cameraOffsetY);
+			HXP.setCamera(_player.x + _player.width / 2 - HXP.width / 2, _player.y + _player.height / 2 - HXP.height / 2 + CAMERA_OFFSET_Y);
 		}
 
 		updateCollisions();
@@ -122,7 +134,7 @@ class GameWorld extends World {
 				if(typeId == -1)
 					continue;
 
-				totalTaskCount++;
+				_totalTaskCount++;
 
 				switch (typeId) 
 				{
@@ -194,7 +206,7 @@ class GameWorld extends World {
 			if(!_player.isInCloakMode && _player.canBeHurt())
 			{
 				_player.initHurtProcess(mob.hitDamage);
-				_hitFx.play();
+				HIT_FX.play();
 			}
 		}
 
@@ -226,14 +238,39 @@ class GameWorld extends World {
 		if( pow != null ) 
 		{
 			pow.handle(_player);
-			_powFx.play();
+			POW_FX.play();
 			remove(pow);
 		}
 	}
 
 	private function updateUI()
 	{
-		_lifeText.text = "HP: " + _player.hp;
-		completionText.text = "Tasks completed: " + _player.completedTaskCount + " of " + totalTaskCount;
+		var uiPositionX : Float = 0.0;
+		var uiPositionY : Float = _player.y + _player.height / 2 - HXP.height / 2;
+
+		if(_player.x - HXP.width / 2 < 0)
+		{
+			uiPositionX = 0;
+		}
+		else if (_player.x + HXP.width / 2 > _map.width) 
+		{
+			uiPositionX = _map.width -  HXP.width;
+		}
+		else
+		{
+			uiPositionX = _player.x + _player.width / 2 - HXP.width / 2;
+		}
+
+		_uiEntity.x = uiPositionX;
+		_uiEntity.y = uiPositionY - 130;
+
+		_lifeText.text = "" + _player.hp;
+		_completionText.text = "Tasks completed: " + _player.completedTaskCount + " of " + _totalTaskCount;
+
+		_lifeTextEntity.x = uiPositionX + 60;
+		_lifeTextEntity.y = uiPositionY + UI_TEXT_OFFSET_Y;
+
+		_completionTextEntity.x = uiPositionX + 300;
+		_completionTextEntity.y = uiPositionY + UI_TEXT_OFFSET_Y;
 	}
 }
