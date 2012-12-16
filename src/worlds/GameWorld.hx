@@ -19,8 +19,11 @@ import flash.geom.Point;
 
 import entities.Player;
 import entities.enemies.Guardian;
+import entities.enemies.Monster;
+import entities.enemies.MovingMob;
 import entities.tasks.Tree;
 import entities.tasks.Ghetto;
+import entities.tasks.StripperJoint;
 import entities.tasks.TaskEntity;
 import enums.TaskState;
 
@@ -50,6 +53,8 @@ class GameWorld extends World {
 		_map.loadGraphic("gfx/tileset.png", ["bg", "stage"]);
 		_map.loadMask("stage");
 		add(_map);
+
+		//new Sfx("music/loop.mp3").loop(0.3);
 
 		totalTaskCount = 0;
 		initObjectsFromMap();
@@ -119,6 +124,9 @@ class GameWorld extends World {
 					case 2:
 						var ghetto : Ghetto = new Ghetto(object.x, object.y);
 						add(ghetto);
+					case 3:
+						var stripperJoint : StripperJoint = new StripperJoint(object.x, object.y);
+						add(stripperJoint);
 					default:
 				}		
 			}
@@ -140,7 +148,9 @@ class GameWorld extends World {
 					case 1:
 						var guardian : Guardian = new Guardian(object.x, object.y);
 						add(guardian);
-						break;
+					case 2:
+						var monster : Monster = new Monster(object.x, object.y);
+						add(monster);
 					default:
 				}
 			}
@@ -149,7 +159,7 @@ class GameWorld extends World {
 
 	private function updateMobCollisions()
 	{
-		var guardian : Guardian = cast _player.collide('guardian', _player.x, _player.y);
+		var guardian : MovingMob = cast _player.collide('enemy', _player.x, _player.y);
 		if( guardian != null )
 		{			
 			if(!_player.isInCloakMode && _player.canBeHurt())

@@ -3,19 +3,19 @@ package entities.enemies;
 
 import com.haxepunk.graphics.Spritemap;
 
-class Guardian extends MovingMob {
+class Monster extends MovingMob {
 
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
 		
-		_sprite = new Spritemap("gfx/guardian.png", 32, 48);
-		_sprite.add("run", [0, 1, 2, 3], 8);
+		_sprite = new Spritemap("gfx/monster.png", 64, 64);
+		_sprite.add("run", [0, 1, 2], 8);
 		_sprite.play("run");
 		graphic = _sprite;
 		
 		type = 'enemy';
-		hitDamage = 3;
+		hitDamage = 6;
 								
 		setHitboxTo( _sprite );
 		

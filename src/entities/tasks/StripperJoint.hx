@@ -6,20 +6,20 @@ import com.haxepunk.graphics.Spritemap;
 
 import enums.TaskState;
 
-class Ghetto extends TaskEntity, implements ITask {
+class StripperJoint extends TaskEntity, implements ITask {
 
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
 		
-		_sprite = new Spritemap("gfx/ghettovilla.png", 192, 200);
+		_sprite = new Spritemap("gfx/strippers.png", 128, 128);
 		_sprite.add("idle_unfinished", [0]);
 		_sprite.add("idle_done", [1]);
 		_sprite.play("idle_unfinished");
 		graphic = _sprite;
 		
 		type = 'task';
-		durationInMs = 6000;
+		durationInMs = 5000;
 								
 		setHitboxTo( _sprite );
 	}

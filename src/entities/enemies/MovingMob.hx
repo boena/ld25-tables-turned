@@ -34,8 +34,11 @@ class MovingMob extends PhysicsEntity {
 	
 	public override function moveCollideX(e:Entity)
 	{
-		acceleration.x = 0;
-		_moveLeft = !_moveLeft;
+		if(e.type == "solid")
+		{
+			acceleration.x = 0;
+			_moveLeft = !_moveLeft;
+		}
 	}
 
 }

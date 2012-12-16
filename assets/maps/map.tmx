@@ -19,6 +19,11 @@
     <property name="typeId" value="1"/>
    </properties>
   </object>
+  <object x="208" y="759" width="15" height="6">
+   <properties>
+    <property name="typeId" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="tasks" width="100" height="30">
   <object x="1059" y="738" width="34" height="55">
@@ -29,6 +34,11 @@
   <object x="240" y="663">
    <properties>
     <property name="taskId" value="2"/>
+   </properties>
+  </object>
+  <object x="1379" y="733" width="7" height="3">
+   <properties>
+    <property name="taskId" value="3"/>
    </properties>
   </object>
  </objectgroup>

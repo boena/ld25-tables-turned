@@ -70,7 +70,7 @@ class TaskEntity extends Entity {
 		if(_completionTimer > 0)
 		{
 			var completionProgress : Float = (nme.Lib.getTimer() - _completionTimer) / durationInMs * 60.0;
-			trace(nme.Lib.getTimer() - _completionTimer / durationInMs);
+			
 			if(completionProgress > 58)
 				completionProgress = 58;
 
