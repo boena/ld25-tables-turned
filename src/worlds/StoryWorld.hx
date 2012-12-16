@@ -8,7 +8,7 @@ import com.haxepunk.World;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.Sfx;
 
-class MenuWorld extends World {
+class StoryWorld extends World {
 
 
 	public function new()
@@ -18,14 +18,14 @@ class MenuWorld extends World {
 
 	public override function begin()
 	{
-		addGraphic(new Image("gfx/startscreen.png"));
+		addGraphic(new Image("gfx/storyscreen.png"));
 	}
 
 	public override function update()
 	{
 		if(Input.check(Key.ENTER))
 		{
-			HXP.world = new StoryWorld();
+			HXP.world = new GameWorld();
 		}
 	}
 
