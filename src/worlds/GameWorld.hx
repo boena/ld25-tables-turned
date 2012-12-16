@@ -59,7 +59,7 @@ class GameWorld extends World {
 		totalTaskCount = 0;
 		initObjectsFromMap();
 
-		_player = new Player(32, 600);		
+		_player = new Player(2500, 600);		
 		add(_player);
 
 		var lifeTextEntity = new Entity(32, 500);

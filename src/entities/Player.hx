@@ -27,6 +27,7 @@ class Player extends PhysicsEntity {
 	public var canCompleteTask : Bool 			= false;
 	public var tryingToCompleteTask : Bool 	= false;
 	public var completedTaskCount : Int 		= 0;
+	public var score : Int 									= 0;
 
 	public var hasTouchedTheGround(default, null) : Bool;
 
