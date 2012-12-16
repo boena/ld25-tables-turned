@@ -23,7 +23,7 @@ class StoryWorld extends World {
 
 	public override function update()
 	{
-		if(Input.check(Key.ENTER))
+		if(Input.check(Key.SPACE))
 		{
 			HXP.world = new GameWorld();
 		}
