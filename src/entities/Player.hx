@@ -20,6 +20,8 @@ class Player extends PhysicsEntity {
 	private static inline var MOVE_SPEED : Float 			= 1.6;
 	private static inline var JUMP_FORCE : Int 				= 20;
 	private static inline var HURT_DELAY_MS : Int 		= 3000;
+	private static inline var JUMP_FX : Sfx 					= new Sfx("sfx/jump.wav");
+	private static inline var CLOAK_FX : Sfx 					= new Sfx("sfx/cloak.wav");
 
 	public var hp : Int 										= 10;
 	public var facingLeft : Bool						= false;
@@ -99,6 +101,7 @@ class Player extends PhysicsEntity {
 		if(Input.pressed("toggle_cloak"))
 		{
 			isInCloakMode = !isInCloakMode;
+			CLOAK_FX.play();
 			_sprite.play("cloaking", true);
 		}
 
@@ -109,7 +112,7 @@ class Player extends PhysicsEntity {
 
 		if(_isOnGround && Input.pressed("jump"))
 		{
-			new Sfx("sfx/jump.wav").play();
+			JUMP_FX.play();
 
 			switch (JUMP_STYLE)
 			{

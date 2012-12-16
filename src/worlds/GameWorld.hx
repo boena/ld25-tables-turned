@@ -18,14 +18,19 @@ import com.haxepunk.Entity;
 import flash.geom.Point;
 
 import entities.Player;
+
+import entities.enemies.MovingMob;
 import entities.enemies.Guardian;
 import entities.enemies.Monster;
-import entities.enemies.MovingMob;
+
+import entities.tasks.TaskEntity;
+import enums.TaskState;
 import entities.tasks.Tree;
 import entities.tasks.Ghetto;
 import entities.tasks.StripperJoint;
-import entities.tasks.TaskEntity;
-import enums.TaskState;
+
+import entities.pows.PowEntity;
+import entities.pows.PowerUp;
 
 class GameWorld extends World {
 
@@ -33,6 +38,9 @@ class GameWorld extends World {
 	private var _map 		: TmxEntity;
 	private var _lifeText : Text;
 	private var totalTaskCount : Int;
+
+	private static inline var _hitFx = new Sfx("sfx/hit.wav");
+	private static inline var _powFx = new Sfx("sfx/pow.wav");
 
 	public var completionText : Text;
 
@@ -94,9 +102,9 @@ class GameWorld extends World {
 			HXP.setCamera(_player.x + _player.width / 2 - HXP.width / 2, _player.y + _player.height / 2 - HXP.height / 2 + _cameraOffsetY);
 		}
 
-		updateMobCollisions();
+		updateCollisions();
 
-		updateTexts();
+		updateUI();
 
 		super.update();
 	}
@@ -132,6 +140,27 @@ class GameWorld extends World {
 			}
 		}
 
+		var powsGroup : TmxObjectGroup = _map.map.getObjectGroup("pows");
+		if(powsGroup != null)
+		{
+			for(object in powsGroup.objects)
+			{
+				var typeIdStr = object.custom.resolve("typeId");
+				var typeId : Int = Std.parseInt(typeIdStr == null ? "-1" : typeIdStr);
+
+				if(typeId == -1)
+					continue;
+
+				switch (typeId) 
+				{
+					case 1:
+						var heart : PowerUp = new PowerUp(object.x, object.y, 1);
+						add(heart);
+					default:
+				}
+			}
+		}
+
 		var mobGroup : TmxObjectGroup = _map.map.getObjectGroup("mobs");
 		if(mobGroup != null)
 		{
@@ -157,15 +186,15 @@ class GameWorld extends World {
 		}
 	}
 
-	private function updateMobCollisions()
+	private function updateCollisions()
 	{
-		var guardian : MovingMob = cast _player.collide('enemy', _player.x, _player.y);
-		if( guardian != null )
+		var mob : MovingMob = cast _player.collide('enemy', _player.x, _player.y);
+		if( mob != null )
 		{			
 			if(!_player.isInCloakMode && _player.canBeHurt())
 			{
-				_player.initHurtProcess(guardian.hitDamage);
-				new Sfx("sfx/hit.wav").play();
+				_player.initHurtProcess(mob.hitDamage);
+				_hitFx.play();
 			}
 		}
 
@@ -192,9 +221,17 @@ class GameWorld extends World {
 			_player.canCompleteTask = false;
 			_player.tryingToCompleteTask = false;
 		}
+
+		var pow : PowEntity = cast _player.collide("pow", _player.x, _player.y);
+		if( pow != null ) 
+		{
+			pow.handle(_player);
+			_powFx.play();
+			remove(pow);
+		}
 	}
 
-	private function updateTexts()
+	private function updateUI()
 	{
 		_lifeText.text = "HP: " + _player.hp;
 		completionText.text = "Tasks completed: " + _player.completedTaskCount + " of " + totalTaskCount;
